@@ -11,6 +11,8 @@
 
     <Label IsVisible="{Binding IsNotConnected}" Text="Not connected to the Internet!" />
 
+    <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
+
     <Button Command="{Binding CmdGetRandomDrink}" Text="Get Random Drink" />
 
     <Label Text="{Binding BeverageName}" />
