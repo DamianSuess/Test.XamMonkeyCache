@@ -4,9 +4,17 @@ Sample data caching strategy using Xamarin 🐒 Monkey Cache.
 
 Sponsored by Xeno Innovations, this project was made with nerd-love using _Xamarin.Forms and Prism with DryIoc.
 
-In this sample we will be using 🙊 [MonkeyCache.SQLite](https://www.nuget.org/packages/MonkeyCache.SQLite/)
+This sample uses [The Cocktail DB API](https://www.thecocktaildb.com/api.php) as it's REST API sample for caching.
 
 ## NuGets
+In this sample uses the following NuGet packages:
+
+This project uses the following NuGets
+* [Prism.Forms](https://github.com/PrismLibrary/Prism) _w/ DryIoc_
+* MonkeyCache.FileStore 🙈
+* [Xamarin.Essentials.Interfaces](https://github.com/rdavisau/essential-interfaces)
+
+## Monkey Cache NuGets
 
 |Name|Description|NuGet|
 | ------------------- | -------- | :------------------: |
@@ -16,7 +24,7 @@ In this sample we will be using 🙊 [MonkeyCache.SQLite](https://www.nuget.org/
 |🙈 MonkeyCache.FileStore|A local file based backing for Monkey Cache|[![NuGet](https://img.shields.io/nuget/v/MonkeyCache.FileStore.svg?label=NuGet)](https://www.nuget.org/packages/MonkeyCache.FileStore/)|
 |Development Feed| |[MyGet](http://myget.org/F/monkey-cache)|
 
-## Platform Support
+### Platform Support
 
 Monkey Cache is a .NET Standard 2.0 library, but has some platform specific tweaks for storing data in the correct Cache directory.
 

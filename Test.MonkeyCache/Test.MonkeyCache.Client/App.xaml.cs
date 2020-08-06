@@ -1,12 +1,12 @@
 using System;
 using Prism;
 using Prism.Ioc;
-using Xamarin.Essentials.Implementation;
-using Xamarin.Essentials.Interfaces;
-using Xamarin.Forms;
 using Test.MonkeyCache.Client.Services;
 using Test.MonkeyCache.Client.ViewModels;
 using Test.MonkeyCache.Client.Views;
+using Xamarin.Essentials.Implementation;
+using Xamarin.Essentials.Interfaces;
+using Xamarin.Forms;
 
 namespace Test.MonkeyCache.Client
 {
@@ -41,22 +41,6 @@ namespace Test.MonkeyCache.Client
       }
     }
 
-    protected override void RegisterTypes(IContainerRegistry containerRegistry)
-    {
-      // Services
-      containerRegistry.RegisterSingleton<IAppInfo, AppInfoImplementation>();
-      containerRegistry.RegisterSingleton<ILogService, LogService>();
-
-      // Navigation
-      containerRegistry.RegisterForNavigation<NavigationPage>();
-      containerRegistry.RegisterForNavigation<MainView, MainViewModel>();
-
-      // OnIdiom Registration
-      ////containerRegistry.RegisterForNavigationOnIdiom<MainView, MainViewModel>(
-      ////  desktopView: typeof(MainDesktopView),
-      ////  tabletView: typeof(MainTabletView));
-    }
-
     protected override void OnResume()
     {
       base.OnResume();
@@ -70,6 +54,23 @@ namespace Test.MonkeyCache.Client
 
       // TODO: This is the time to save app data in case the process is terminated.
       // This is the perfect timing to release exclusive resources (camera, I/O devices, etc...)
+    }
+
+    protected override void RegisterTypes(IContainerRegistry containerRegistry)
+    {
+      // Services
+      containerRegistry.RegisterSingleton<IAppInfo, AppInfoImplementation>();
+      containerRegistry.RegisterSingleton<ILogService, LogService>();
+      containerRegistry.RegisterSingleton<ICacheService, CacheService>();
+
+      // Navigation
+      containerRegistry.RegisterForNavigation<NavigationPage>();
+      containerRegistry.RegisterForNavigation<MainView, MainViewModel>();
+
+      // OnIdiom Registration
+      ////containerRegistry.RegisterForNavigationOnIdiom<MainView, MainViewModel>(
+      ////  desktopView: typeof(MainDesktopView),
+      ////  tabletView: typeof(MainTabletView));
     }
   }
 }

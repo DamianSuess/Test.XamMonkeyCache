@@ -8,11 +8,15 @@
              mc:Ignorable="d">
 
   <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-    <Label Text="Welcome to Xamarin Forms and Prism!" />
 
-    <Button Command="{Binding CmdSampleDialog}" Text="Sample Pop-up" />
+    <Label IsVisible="{Binding IsNotConnected}" Text="Not connected to the Internet!" />
 
-    <Button Command="{Binding CmdSampleLogging}" Text="Sample Logging" />
+    <Button Command="{Binding CmdGetRandomDrink}" Text="Get Random Drink" />
+
+    <Label Text="{Binding BeverageName}" />
+
+    <!--<Button Command="{Binding CmdSampleDialog}" Text="Sample Pop-up" />
+    <Button Command="{Binding CmdSampleLogging}" Text="Sample Logging" />-->
 
   </StackLayout>
 

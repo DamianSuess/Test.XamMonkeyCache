@@ -7,7 +7,7 @@ using Prism.Ioc;
 namespace Test.MonkeyCache.Droid
 {
   [Activity(
-    Label = "XamarinTemplate",
+    Label = "Monkey Cache",
     Icon = "@mipmap/ic_launcher",
     Theme = "@style/MainTheme",
     MainLauncher = true,
