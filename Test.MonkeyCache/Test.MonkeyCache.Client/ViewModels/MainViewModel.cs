@@ -45,7 +45,7 @@ namespace Test.MonkeyCache.Client.ViewModels
 
       // https://www.thecocktaildb.com/api/json/v1/1/random.php
 
-      var drinks = await _cacheService.GetFeedAsync();
+      var drinks = await _cacheService.GetRandomBeverageAsync();
       if (drinks != null)
       {
         var drink = drinks.Drinks.FirstOrDefault();

@@ -8,7 +8,7 @@ namespace Test.MonkeyCache.Client.Services
 {
   public interface ICacheService
   {
-    Task<CocktailList> GetFeedAsync();
+    Task<CocktailList> GetRandomBeverageAsync();
     //// Task<IEnumerable<CocktailList>> GetFeedAsync();
   }
 }

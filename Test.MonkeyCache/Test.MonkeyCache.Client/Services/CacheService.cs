@@ -18,16 +18,16 @@ namespace Test.MonkeyCache.Client.Services
       Barrel.ApplicationId = "MunkeyCacheSample";
     }
 
-    public async Task<CocktailList> GetFeedAsync()
+    public async Task<CocktailList> GetRandomBeverageAsync()
     {
       string url = Uri();
       CocktailList drinks = null;
 
       try
       {
+        // Return cached data only if there's no Internet and Cache is not expired
         if (Connectivity.NetworkAccess != NetworkAccess.Internet && !Barrel.Current.IsExpired(key: url))
         {
-          // Return our cached data
           return Barrel.Current.Get<CocktailList>(key: url);
           //// return Barrel.Current.Get<IEnumerable<CocktailList>>(key: url);
         }
