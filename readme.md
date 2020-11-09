@@ -2,7 +2,7 @@
 <img align="right" width="90" height="90" src="https://raw.githubusercontent.com/DamianSuess/Test.XamMonkeyCache/master/docs/MonkeyCacheSmall-2.png" />
 Sample data caching strategy using Xamarin 🐒 Monkey Cache.
 
-Sponsored by [Suess Labs](https://suesslabs.com] and [Xeno innovations](https://xenoinc.com], this project was made with nerd-love using _Xamarin.Forms and Prism with DryIoc_.
+Sponsored by [Suess Labs](https://suesslabs.com) and [Xeno innovations](https://xenoinc.com), this project was made with nerd-love using _Xamarin.Forms and Prism with DryIoc_.
 
 This sample uses [The Cocktail DB API](https://www.thecocktaildb.com/api.php) as it's REST API sample for caching.
 
