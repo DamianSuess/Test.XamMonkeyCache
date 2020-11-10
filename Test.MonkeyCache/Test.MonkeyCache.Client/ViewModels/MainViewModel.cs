@@ -26,6 +26,7 @@ namespace Test.MonkeyCache.Client.ViewModels
       _cacheService = cacheService;
 
       IsNotConnected = Connectivity.NetworkAccess != NetworkAccess.Internet;
+      IsBusy = false;
     }
 
     public string BeverageName
@@ -34,18 +35,22 @@ namespace Test.MonkeyCache.Client.ViewModels
       set => SetProperty(ref _beverageName, value);
     }
 
-    public DelegateCommand CmdGetRandomDrink => new DelegateCommand(OnGetRandomDrinkAsync);
+    public DelegateCommand CmdGetRandomDrink => new DelegateCommand(OnGetRandomDrinkAsync, () => !IsBusy).ObservesProperty(() => IsBusy);
+
     public ObservableCollection<CocktailList> DrinkList { get; set; }
 
     ////public DelegateCommand CmdSampleDialog => new DelegateCommand(OnSampleDialogAsync);
     ////public DelegateCommand CmdSampleLogging => new DelegateCommand(OnSampleLogging);
+
+    /// <summary>
+    ///   Gets a random drink name from the site:
+    ///   https://www.thecocktaildb.com/api/json/v1/1/random.php
+    /// </summary>
     private async void OnGetRandomDrinkAsync()
     {
       IsBusy = true;
 
-      // https://www.thecocktaildb.com/api/json/v1/1/random.php
-
-      var drinks = await _cacheService.GetRandomBeverageAsync();
+      var drinks = await _cacheService.GetRandomBeverageAsync().ConfigureAwait(false);
       if (drinks != null)
       {
         var drink = drinks.Drinks.FirstOrDefault();

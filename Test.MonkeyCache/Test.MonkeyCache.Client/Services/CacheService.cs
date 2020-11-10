@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using MonkeyCache.FileStore;
@@ -12,9 +11,11 @@ namespace Test.MonkeyCache.Client.Services
   {
     private const string ApiHost = "https://www.thecocktaildb.com/api/json/v1";
     private const string ApiKey = "1";
+    private ILogService _log;
 
-    public CacheService()
+    public CacheService(ILogService log)
     {
+      _log = log;
       Barrel.ApplicationId = "MunkeyCacheSample";
     }
 
@@ -32,17 +33,17 @@ namespace Test.MonkeyCache.Client.Services
           //// return Barrel.Current.Get<IEnumerable<CocktailList>>(key: url);
         }
 
-        var client = new HttpClient();
-        var json = await client.GetStringAsync(url);
-        drinks = Utf8Json.JsonSerializer.Deserialize<CocktailList>(json);
-        //// drinks = Utf8Json.JsonSerializer.Deserialize<IEnumerable<CocktailList>>(json);
+        using (var client = new HttpClient())
+        {
+          var json = await client.GetStringAsync(url);
+          drinks = Utf8Json.JsonSerializer.Deserialize<CocktailList>(json);
+        }
 
         Barrel.Current.Add(key: url, data: drinks, expireIn: TimeSpan.FromDays(2));
-
-        return drinks;
       }
       catch (Exception ex)
       {
+        _log.Error($"Failed to get beverages.{Environment.NewLine}{ex.Message}");
       }
 
       return drinks;
